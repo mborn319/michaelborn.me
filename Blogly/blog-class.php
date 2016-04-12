@@ -89,8 +89,8 @@ class Blog {
      * @param string the FULL filename of the .yaml file. Include '.yaml'.
      * @return object FrontMatter data.
     */
-    public function parse_article($filename) {
-        if (!$filename) { $filename = $this->get_full_filename();}
+    public function parse_article($filename = "") {
+        if ($filename == "") { $filename = $this->get_full_filename();}
         $this->articleData = new FrontMatter($filename);
         return $this->articleData->data;
     }
@@ -100,8 +100,8 @@ class Blog {
      * @param string url the permalink of the blog article. Does not include any path.
      * @return string a full path (used for file read or include) of the article file.
     */
-    public function get_full_filename($url) {
-        if (!$url) {$url = $this->articleName;}
+    public function get_full_filename($url = "") {
+        if ($url == "") {$url = $this->articleName;}
         return $_SERVER["DOCUMENT_ROOT"] . $this->articleDirectory . $this->get_filename_with_ext($url);
     }
 
