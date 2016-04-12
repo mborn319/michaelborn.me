@@ -20,37 +20,23 @@
       {% include 'partials/navigation.html.twig' %}
     </nav>
 		<div class="centerWidth clearfix">
-      <div id="logo"><h1>Michael Born</h1></div>
+      <div id="tagline">{% markdown %}{% block tagline %}Michael Born{% endblock %}{% endmarkdown %}</div>
 		</div>
 	</header>
-    <main role="main">
+  <main role="main">
 		<div class="centerWidth">
-        <div class="gridcol edges">
-          <section class="content col-12">
-            {% block content %}{% endblock %}
-          </section>
-      </div><!--/.gridcol-->
+      {% block main %}{% endblock %}
 		 </div><!--/centerWidth-->
 	</main><!--/main-->
 
-
-
 	<footer>
-		<div class="centerWidth">
-      {% include 'partials/contactform.html.twig' %}
-
-			<address>
-				<p><a href="mailto:mborn319@outlook.com">mborn319@outlook.com</a><br />
-			</address>
-
-		</div>
+    {% block footer %}{% endblock %}
 	</footer>
-
 </div><!--end #container-->
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
-<script src="/static/js/site.js"></script>
+<!--<script src="/static/js/site.js"></script>-->
 
 </body>
 </html>
