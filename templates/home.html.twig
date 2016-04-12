@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<div class="blogrecent">
+  {% include 'partials/blogrecent.html.twig' %}
+</div>
+
+<div id="about">
+  {% block content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="centerWidth">
+  {% include 'partials/contactform.html.twig' %}
+
+  <address>
+    <p><a href="mailto:mborn319@outlook.com">mborn319@outlook.com</a><br />
+  </address>
+</div><!--/.centerWidth-->
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "home.html.twig" %}
+{% set class = "subpage blogPage articlePage" %}
+{% set title = article.title ~ " | Blog" %}
+{% set meta_description = article.summary %}
+
+{% set bannerimg="/images/laptop-coder-small.jpg" %}
+{% set banneralt="Michael Born's musings on Web Development" %}
+
+{% block tagline %}
+# {{article.title}}
+{{article.summary}}
+{% endblock %}
+
+
+{% block content %}
+    <div class="blog details">
+        <article id="{{article.title}}" class="details">
+            {% if article.image %}<div class="image"><img src="{{article.image}}" alt="{{article.title}}" /></div>{% endif %}
+            <h1>{{article.title}}</h1>
+            <p>Posted by {{article.author}} on {{article.date|date("m/d/Y")}}</p>
+            {{article.content|markdown}}
+        </article>
+    </div><!--/.blog-->
+{% endblock %}

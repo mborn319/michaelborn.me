@@ -1,0 +1,18 @@
+{% extends "home.html.twig" %}
+{% set class = "blogPage article" %}
+
+{% set title ="Blog" %}
+
+{% set bannerimg="/images/laptop-coder-small.jpg" %}
+{% set banneralt="Michael Born's musings on Web Development" %}
+
+{% block tagline %}
+# Our Blog
+{% endblock %}
+
+
+{% block content %}
+  <div class="blog list">
+    {% include 'partials/blogrecent.html.twig'%}
+  </div><!--/.blog.recent-->
+{% endblock %}
