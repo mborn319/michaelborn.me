@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html class="" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+	<title>Michael Born</title>
+
+	<link href="/static/css/main.css" rel="stylesheet" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,300' rel='stylesheet' type='text/css' />
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+</head>
+<body>
+<div id="container">
+	 <header id="header" class="clearfix">
+    <nav class="nav clearfix">
+      {% include 'partials/navigation.html.twig' %}
+    </nav>
+		<div class="centerWidth clearfix">
+      <div id="logo"><h1>Michael Born</h1></div>
+		</div>
+	</header>
+    <main role="main">
+		<div class="centerWidth">
+        <div class="gridcol edges">
+          <section class="content col-12">
+            {% block content %}{% endblock %}
+          </section>
+      </div><!--/.gridcol-->
+		 </div><!--/centerWidth-->
+	</main><!--/main-->
+
+
+
+	<footer>
+		<div class="centerWidth">
+      {% include 'partials/contactform.html.twig' %}
+
+			<address>
+				<p><a href="mailto:mborn319@outlook.com">mborn319@outlook.com</a><br />
+			</address>
+
+		</div>
+	</footer>
+
+</div><!--end #container-->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+<script src="/static/js/site.js"></script>
+
+</body>
+</html>
