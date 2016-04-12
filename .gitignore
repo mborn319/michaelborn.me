@@ -1,0 +1,10 @@
+#Ignore the vendor folder!
+vendor/*
+
+#ignore composer stuff
+composer.lock
+composer.phar
+
+#ignore swp
+*.swp
+*.swo
