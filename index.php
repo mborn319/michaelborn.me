@@ -1,4 +1,8 @@
 <?php
+/***********************************
+ *  Blog page
+ *  Handles individual articles as well as a paginated list of all articles.
+***********************************/
 require_once 'inc/errHandler.php';
 
 //composer load project stuff, like Twig and parsedown-extra
@@ -22,25 +26,50 @@ $twig->addTokenParser(new MarkdownTokenParser($engine));
 
 
 /***********************************
- * Recent Blog Posts feed
- * get 5 most recent blog posts, display on homepage.
+ * Here's the blog-specific stuff.
+ * tell the blog class to look for article files in the /content/blog/articles/ directory.
+ *
+ * if ?permalink= is defined
+ * then we show the individual blog post.
+ * else we show the 10 most recent blog articles. (only the summary)
 ***********************************/
 $blogArticleDir = "/content/blog/articles/";
 
-//load the blog class
-require_once 'Blogly/blog-class.php';
 
-//Init the blog class, and specify where the blog articles are stored.
-$blog = new Blog($blogArticleDir);
+if (isset($_GET["permalink"])) {
+    //load the blog class
+    require_once 'Blogly/blog-class.php';
 
-//get the last 5 articles. Note the articles are automatically parsed.
-$recentArticles = $blog->get_n_articles();//last five by default
+    //Init the blog class, and specify where the blog articles are stored.
+    $article = new Blog($blogArticleDir);
 
-//render HTML
-echo $twig->render('home.twig',array(
-  "class"=>"home",
-  "articles"=>$recentArticles
-));
+    //Tell the blog which article we're interested in.
+    $article->set_article_name($_GET["permalink"]);
 
+    if ($article->exists()) {
+        //parse the article, separating parameters (date, title, etc.) from body.
+        $curArticle = $article->parse_article();
+
+        //send the array of articles to Twig.
+        echo $twig->render('article.html.twig',["article"=>$curArticle]);
+    } else {
+        //Show 404 message.
+        echo "Blog article could not be found.";
+    }
+
+} else {
+    //else standard blog list page.
+    //load the blog class
+    require_once 'Blogly/blog-class.php';
+
+    //Init the blog class, and specify where the blog articles are stored.
+    $blog = new Blog($blogArticleDir);
+
+    //get the last 5 articles. Note the articles are automatically parsed.
+    $recentArticles = $blog->get_n_articles(10);//last 10
+
+    //send the array of articles to Twig.
+    echo $twig->render('blog.html.twig',["articles"=>$recentArticles]);
+}
 
 ?>
