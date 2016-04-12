@@ -1,0 +1,10 @@
+---
+author: Michael
+title: My cool new blog post
+date: 2016-04-12
+url: 2016-04-12-font-face
+summary: A test of the new blog system
+  ---
+  Please note this article uses markdown to format the article body. The blog articles are stored in text files with the .yaml extension. Yaml files allow you to edit a list of keys and values as well as a body of text.
+
+  This system uses [https://github.com/Modularr/YAML-FrontMatter](FrontMatter) to read the YAML files
