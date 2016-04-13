@@ -1,4 +1,4 @@
-{% extends "home.html.twig" %}
+{% extends "subpage.html.twig" %}
 {% set class = "subpage blogPage articlePage" %}
 {% set title = article.title ~ " | Blog" %}
 {% set meta_description = article.summary %}
@@ -14,11 +14,14 @@
 
 {% block content %}
     <div class="blog details">
-        <article id="{{article.title}}" class="details">
-            {% if article.image %}<div class="image"><img src="{{article.image}}" alt="{{article.title}}" /></div>{% endif %}
-            <h1>{{article.title}}</h1>
-            <p>Posted by {{article.author}} on {{article.date|date("m/d/Y")}}</p>
-            {{article.content|markdown}}
+        <article id="{{article.title}}" class="details" itemscope itemtype="http://schema.org/LiveBlogPosting">
+            {% if article.image %}<div class="image"><img itemprop="thumbnail" src="{{article.image}}" alt="{{article.title}}" /></div>{% endif %}
+            <h1 itemprop="headline">{{article.title}}</h1>
+            <div itemprop="articleBody">{{article.content|markdown}}</div>
+            <footer>
+              <meta itemprop="author" content="{{article.author}}" />
+              <time itemprop="datePublished">{{article.date|date("m/d/Y")}}</time></p>
+            </footer>
         </article>
     </div><!--/.blog-->
 {% endblock %}

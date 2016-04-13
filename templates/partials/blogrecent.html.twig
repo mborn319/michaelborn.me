@@ -1,5 +1,5 @@
 {% for article in articles %}
-    <article id="{{article.title}}" class="article">
+    <article id="{{article.title}}" class="post">
         {% if article.image %}<div class="image"><img src="{{article.image}}" alt="{{article.title}}" /></div>{% endif %}
         <h3>{{article.title}}</h3>
         <time>{{article.date}}</time>

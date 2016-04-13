@@ -490,10 +490,15 @@ h6 .fa {
   display: none;
 }
 
+/*  blog page - individual articles */
+.blog.details footer {
+  font-size: .95em;
+  color: #777;
+}
 
 
 /*  Footer, obviously. */
-footer  {
+.pageFoot  {
   background: #D13F31;
   text-align: center;
   color: #fff;
