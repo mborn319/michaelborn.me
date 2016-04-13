@@ -416,12 +416,14 @@ header {
     font-size: 1.3rem;
 }
 .nav .links a:hover, .nav .links a:focus {
-    background-color: #1A202C;
+    background-color: #fff;
+    color: #111;
 }
 
 /*  tagline shows over banner */
 #tagline {
   min-height: 300px;
+  text-shadow: 2px 2px 2px black;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -493,9 +495,30 @@ h6 .fa {
 /*  Footer, obviously. */
 footer  {
   background: #D13F31;
-  padding: 2rem 0;
+  text-align: center;
   color: #fff;
 }
+footer address {
+  padding: 1em 0;
+}
+footer address ul {
+  display: block;
+  margin: 1em 0;
+}
+footer address li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0 1em;
+}
+/*
+footer address li:before {
+  content: "\2022";
+  color: inherit;
+  display: inline-block;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+*/
 footer a {
 	color: inherit;
 }
@@ -503,6 +526,10 @@ footer a:hover, footer a:focus {
     text-decoration: underline;
 }
 
+footer .copyright {
+  background: #252525;
+  padding: 3px 0;
+}
 
 .contact .block {
 	margin: 1rem 0;
