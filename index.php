@@ -68,8 +68,8 @@ if (isset($_GET["permalink"])) {
     //get the last 5 articles. Note the articles are automatically parsed.
     $recentArticles = $blog->get_n_articles(10);//last 10
 
-    //send the array of articles to Twig.
-    echo $twig->render('blog.html.twig',["articles"=>$recentArticles]);
+    //send the array of articles to the twig template
+    echo $twig->render('blog.twig',["articles"=>$recentArticles]);
 }
 
 ?>
