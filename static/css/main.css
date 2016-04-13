@@ -189,54 +189,54 @@ ul, ol {
 	width: 100%;
 	padding: 0 .5%;
 }
-    .gridcol .col-sm-1 {
-    	width: 8.3%;
-    }
-    .gridcol .col-sm-2 {
-    	width: 16.66%;
-    }
-    .gridcol .col-sm-3 {
-    	width: 25%;
-    }
-    .gridcol .col-sm-4 {
-    	width: 33.33%;
-    }
-    .gridcol .col-sm-5 {
-    	width: 41.66%;
-    }
-    .gridcol .col-sm-6 {
-    	width: 50%;
-    }
-    .gridcol .col-sm-7 {
-    	width: 58.33%;
-    }
-    .gridcol .col-sm-8 {
-    	width: 66%;
-    }
-    .gridcol .col-sm-9 {
-    	width: 75%;
-    }
-    .gridcol .col-sm-10 {
-    	width: 83.33%;
-    	padding: 0 .5%;
-    }
-    .gridcol .col-sm-11 {
-    	width: 91.67%;
-    	padding: 0 .5%;
-    }
-    .gridcol .col-sm-12 {
-    	width: 100%;
-    	padding: 0 .5%;
-    }
+.gridcol .col-sm-1 {
+  width: 8.3%;
+}
+.gridcol .col-sm-2 {
+  width: 16.66%;
+}
+.gridcol .col-sm-3 {
+  width: 25%;
+}
+.gridcol .col-sm-4 {
+  width: 33.33%;
+}
+.gridcol .col-sm-5 {
+  width: 41.66%;
+}
+.gridcol .col-sm-6 {
+  width: 50%;
+}
+.gridcol .col-sm-7 {
+  width: 58.33%;
+}
+.gridcol .col-sm-8 {
+  width: 66%;
+}
+.gridcol .col-sm-9 {
+  width: 75%;
+}
+.gridcol .col-sm-10 {
+  width: 83.33%;
+  padding: 0 .5%;
+}
+.gridcol .col-sm-11 {
+  width: 91.67%;
+  padding: 0 .5%;
+}
+.gridcol .col-sm-12 {
+  width: 100%;
+  padding: 0 .5%;
+}
 @media screen and (min-width: 700px) {
     .gridcol .col-md-1 {
-    	width: 8.3%;
+      width: 8.3%;
     }
     .gridcol .col-md-2 {
-    	width: 16.66%;
+      width: 16.66%;
     }
     .gridcol .col-md-3 {
-    	width: 25%;
+      width: 25%;
     }
     .gridcol .col-md-4 {
     	width: 33.33%;
@@ -347,7 +347,7 @@ body {
 	position: relative;
 }
 header {
-	background: url('/content/images/fusion-small.jpg') center center / cover no-repeat #D13F31;
+	background: url('/content/images/fusion-small.jpg') center bottom / cover no-repeat #D13F31;
 	text-align: center;
 	color: #fff;
 	padding: 1rem 0;
@@ -417,6 +417,20 @@ header {
 }
 .nav .links a:hover, .nav .links a:focus {
     background-color: #1A202C;
+}
+
+/*  tagline shows over banner */
+#tagline {
+  min-height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+#tagline h1, #tagline h2 {
+  margin: 0;
+  width: 100%;
 }
 
 
