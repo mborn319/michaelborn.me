@@ -330,7 +330,9 @@ ul, ol {
 }
 
 
-body, html { min-height: 100%; font-size: 17px; }
+body, html {
+  min-height: 100%;
+  font-size: 17px; }
 body {
   font-family: "Gidole", Helvetica, sans-serif;
   font-size: 1.2rem;
@@ -431,8 +433,9 @@ header {
   justify-content: center;
 }
 #tagline h1, #tagline h2 {
-  margin: 0;
+  margin: .4em 0;
   width: 100%;
+  line-height: 1;
 }
 
 
@@ -602,6 +605,10 @@ footer .copyright {
   }
   .nav li.social .username {
     display: inline-block;
+  }
+
+  #tagline h1, #tagline h2 {
+    margin: 0;
   }
 
 }
