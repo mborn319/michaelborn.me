@@ -350,6 +350,7 @@ body {
 }
 header {
 	background: url('/content/images/fusion-small.jpg') center bottom / cover no-repeat #D13F31;
+  min-height: 300px;
 	text-align: center;
 	color: #fff;
 	padding: 1rem 0;
@@ -424,8 +425,8 @@ header {
 
 /*  tagline shows over banner */
 #tagline {
-  min-height: 300px;
   text-shadow: 2px 2px 2px black;
+  min-height: 300px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -471,6 +472,12 @@ h6 .fa {
     vertical-align: middle;
     width: 95px;
 }
+
+main .centerWidth {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 /*********** | blog post list styles | ****************/
 
 .blog.list .post {
@@ -497,6 +504,10 @@ h6 .fa {
 .blog.details footer {
   font-size: .95em;
   color: #777;
+}
+
+main .twitter-tweet {
+  margin: 1.5em auto !important;
 }
 
 
@@ -581,7 +592,29 @@ footer .copyright {
   text-align: justify;
 }
 
+/****************** | Syntax higlighting! | *************************/
+/* syntax highlighting
+  inline code blocks styles */
 
+code, kbd {
+    /* monospace font, taller line height */
+    font-family: monospace;
+    line-height: 1.4;
+    /* these colors will get overriden by any highlight.js theme, so that's ok. */
+    background: #fdf6e3;
+    color: #2aa198;
+    /* padding left and right */
+    display: inline-block;
+    padding: 0 5px;
+}
+
+kbd {
+    font-size: 80%;
+    color: #fff;
+    background-color: #333;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
+}
 
 /****************** | Responsive | *************************/
 @media screen and (min-width: 400px) {

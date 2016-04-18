@@ -14,29 +14,31 @@
 
 </head>
 <body>
-<div id="container">
-	 <header id="header" class="clearfix">
-    <nav class="nav clearfix">
-      {% include 'partials/navigation.html.twig' %}
-    </nav>
-		<div class="centerWidth clearfix">
-      <div id="tagline">{% markdown %}{% block tagline %}Michael Born{% endblock %}{% endmarkdown %}</div>
-		</div>
-	</header>
-  <main role="main">
-		<div class="centerWidth">
-      {% block main %}{% endblock %}
-		 </div><!--/centerWidth-->
-	</main><!--/main-->
+  <div id="container">
+     <header id="header" class="clearfix">
+      <nav class="nav clearfix">
+        {% include 'partials/navigation.html.twig' %}
+      </nav>
+      <div class="centerWidth clearfix">
+        <div id="tagline">{% markdown %}{% block tagline %}Michael Born{% endblock %}{% endmarkdown %}</div>
+      </div>
+    </header>
+    <main role="main">
+      <div class="centerWidth">
+        {% block main %}{% endblock %}
+       </div><!--/centerWidth-->
+    </main><!--/main-->
 
-	<footer class="pageFoot">
-    {% include 'partials/footer.html.twig' %}
-	</footer>
-</div><!--end #container-->
+    <footer class="pageFoot">
+      {% include 'partials/footer.html.twig' %}
+    </footer>
+  </div><!--end #container-->
 
 
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>-->
-<!--<script src="/static/js/site.js"></script>-->
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+      hljs.initHighlighting();
+  </script>
 </body>
 </html>
