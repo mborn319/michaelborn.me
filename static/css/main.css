@@ -501,6 +501,12 @@ main .centerWidth {
 }
 
 /*  blog page - individual articles */
+.blog .summary {
+    color: #888;
+    border-bottom: 1px dashed #999;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+}
 .blog.details footer {
   font-size: .95em;
   color: #777;
