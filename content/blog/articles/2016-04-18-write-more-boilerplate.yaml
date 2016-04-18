@@ -1,0 +1,64 @@
+---
+author: Michael Born
+title: Write More Boilerplate
+date: 2016-04-18
+url: 2016-04-18-write-more-boilerplate
+summary: A slight rant on the infatuation with frontend frameworks, and a call for more boilerplate code
+  ---
+Frontend web development has become infatuated with frameworks of all kinds. Are they really the cat's meow? That depends on your needs.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">It&#39;s so much fun to start a new project and get to use that cool new framework everybody&#39;s talking about! <a href="https://t.co/QMUBQHMxu4">pic.twitter.com/QMUBQHMxu4</a></p>&mdash; Practical Developer (@ThePracticalDev) <a href="https://twitter.com/ThePracticalDev/status/722103209079267330">April 18, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## The problem with (CSS) frameworks
+In three bullet points:
+
+1. Styles you don't want
+2. Styles you don't understand
+3. Styles you don't need
+
+### Example: Bootstrap
+Many, many, many websites use Bootstrap to great effect. Many others are only using Bootstrap for its button, form, and grid styles. And many times, even this is modified through custom styles or drop-in themes found on [Bootswatch](http://bootswatch.com/). What is the point?
+
+* **Styles you don't want:** 
+
+  Endless typography styles and resets, box-sizing on EVERYTHING, including `*:before` and `*:after`.
+* **Styles you don't understand:** 
+
+  Bootstrap is fairly easy to understand, but even I get confused when attempting to chain `.col-md-x` and `.col-xs-x`, etc.
+* **Styles you don't need:** 
+
+  Honestly, who uses `.col-lg-push-x`? What about `.pull-left`, `.col-lg-offset-x`, etc?
+
+Do you need all 122KB of Bootstrap CSS on your site? Do you want any of it? Don't get me wrong, Bootstrap is an amazing framework. It is wildly popular, very simple to use, and covers almost everything under the sun. But developers have to realize that ease of use and ease of maintenance are two different things.
+
+## The solution: Build and reuse your own modules
+Sure, for a full-blown web app with popups, forms, alerts and such, use Bootstrap or Pure or Foundation, etc. But should a website for Joe's Lunchbox look like a CMS backend or a Github static page? Of course not. Build your own modules to meet your needs. Save each one in [GistBox](http://www.gistboxapp.com/), and add on as necessary. 
+
+For a grid system, take a look at Chris Coyier's [Don't Overthink It Grids](https://css-tricks.com/dont-overthink-it-grids/). For buttons, [Pure CSS](http://purecss.io/buttons/) offers a great base to start with.
+
+Here's what I use for breadcrumbs, for example:
+
+<script async src="http://jsfiddle.net/ywxxnwgq/2/embed/html,css,result/"></script>
+
+This is stupidly simple. Change the hover color, change the delimiter, change the font, whatever. This is boilerplate, which means you can change any or all of it without wasting bytes or development time.
+
+The point is that you shouldn't use a shop broom to dust a mantle. Frameworks have their uses, but most cases they should be replaced by small, copy-and-pasted modules customized to fit YOUR needs.
+
+## Writing boilerplate
+The idea behind writing boilerplate code is to create a module which can be reused with minimal effort. Some good candidates for boilerplate include:
+
+* dropdown menus
+* horizontal menus
+* pretty much any menu you can think of
+* pagination
+* forms
+* grids
+* etc, etc
+
+Boilerplate code has to be generic so that it will work for as many use cases as possible without customization. This is why your snippets should be saved separately from production code. Navigating to the source files for http://lonesomewhistle.com/ and copying the CSS for the super-awesome audio player will trip you up because it color scheme does not match the color scheme for http://calvarygospelchurch.com/. 
+
+Some of my most often-used boilerplate snippets are my grids, buttons, and accordion navigation Javascript. I've tweaked these time and time again until I ran out of improvements. At this point, these snippets have saved me hours of fighting framework styles or attempting to extend some random jQuery plugin.
+
+## In summary
+Frameworks are a tool. Nothing more, nothing less. If you need a framework, by all means use a framework. But I posit that most websites can be built faster with less bloat by using boilerplate code customized to match the site.
