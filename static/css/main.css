@@ -501,7 +501,7 @@ main .centerWidth {
 }
 
 /*  blog page - individual articles */
-.blog .summary {
+.blog.details .summary {
     color: #888;
     border-bottom: 1px dashed #999;
     padding-bottom: 1em;
