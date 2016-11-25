@@ -1,0 +1,52 @@
+---
+author: Michael Born
+title: CFML variable names gotcha in <cfparam> vs. form[value]
+date: 2016-11-24
+url: 2016-11-24-coldfusion-variable-param
+summary: An interesting "bug" with <cfparam> when a variable name contains a dash character
+---
+I was building a CRUD app the other day and started getting this interesting error when I started testing it.
+
+````
+Parameter 1 of function SetVariable, which is now form.join-e-list, must be a syntactically valid variable name.
+````
+
+I immediately thought *Huh, ok, [variable names are not allowed to contain a dash character][1]*. The CFML docs are pretty clear on this]: only letters, numbers, underscore, and "Unicode currency symbols" can be used in a variable name. (Wait, so variable names like `iLike$Signs` are valid?!?)
+
+When I built this brochure order form, I used a form generator to spit out a pile of formatted inputs and labels. The intracacies of that little form builder caused me to generate `<input>` tags with a dash character separating each word in the field name. Something like
+
+```
+<label for="join-e-list">Join E-Newsletter</label>
+<input type="checkbox" name="join-e-list" id="join-e-list" value="1" />
+```
+
+Now, the curious thing about this error message is that nearly ALL of my field names contained a dash character, and this error was ocurring near the end of my submit code. I have a (very good) habit of using `<cfparam>` on every single form input to normalize the data.
+
+```
+<cfparam name="form.first-name" default="" />
+<!--- boolean checkbox - 1 if checked, 0 if unchecked --->
+<cfparam name="form.join-e-list" default="0" />
+```
+
+When I realized that `form.first-name` was NOT throwing an error, and `form.join-e-list` WAS throwing an error, I had to think about it for a minute. First I tried just a single dash character. `form.join-elist`. Nope, still threw an error. Then it hit me that input checkboxes not sent in the POST request unless they are in a checked state at the time of submit. 
+
+So it appears that these form-fields-with-dash-characters would work totally fine **as long as the variable already exists**. In other words, using `<cfparam>` to set a default for an undefined variable will attempt to create the variable, at which point it fails because it's an invalid variable name.
+
+Basically, `<cfparam name="form.x" default="" />` acts like this:
+
+```
+<cfif Not StructKeyExists(form,"x")>
+  <cfset form.x = "" />
+</cfif>
+```
+
+## Summary
+
+Evidently POST variables have no such name/syntax test before they are created. This has me wondering if it's possible to do scope injection via creating a form input like `<input name="session.authenticated" value="true" />`. 
+
+So [I checked][2], and no, these form fields still go straight into the `form` scope. Good to know.
+
+I guess the takeaway is that your form field names should adhere to standard server-side language variable syntax. 
+
+[1]: https://helpx.adobe.com/coldfusion/developing-applications/the-cfml-programming-language/using-coldfusion-variables/creating-variables.html
+[2]: https://gist.github.com/mborn319/73913df49c91cdd15624f10b7907e049
