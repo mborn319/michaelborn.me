@@ -349,7 +349,7 @@ body {
 	position: relative;
 }
 header {
-	background: url('/content/images/fusion-small.jpg') center bottom / cover no-repeat #D13F31;
+	background: url('https://source.unsplash.com/5Ntkpxqt54Y/1600x300') center bottom / cover no-repeat #D13F31;
   min-height: 300px;
 	text-align: center;
 	color: #fff;
