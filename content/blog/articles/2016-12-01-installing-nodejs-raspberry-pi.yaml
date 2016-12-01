@@ -1,11 +1,11 @@
 ---
 author: Michael Born
-title: Installing Node.JS on Raspberry Pi 1+
+title: Installing Node.JS on Raspberry Pi A+
 date: 2016-11-30
 url: 2016-12-01-installing-nodejs-raspberry-pi
 summary: How to install Node.JS v6.x on an ARMV6 Raspberry Pi.
 ---
-For the final step of my [BoomBox capstone project][1], I needed to install Boombox (and thus Node.JS) on my Raspberry Pi, which happens to be a Model 1+. So I ran `sudo apt install nodejs npm`, but quickly realized that this only installed node version 0.10.x, not sure why at this point.
+For the final step of my [BoomBox capstone project][1], I needed to install Boombox (and thus Node.JS) on my Raspberry Pi, which happens to be a Model A+. So I ran `sudo apt install nodejs npm`, but quickly realized that this only installed node version 0.10.x, not sure why at this point.
 
 So, I uninstalled via `sudo apt remove nodejs npm`, and tried to use `nodesource` to install Node version 4.x.
 
