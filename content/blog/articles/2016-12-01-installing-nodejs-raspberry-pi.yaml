@@ -1,0 +1,68 @@
+---
+author: Michael Born
+title: Installing Node.JS on Raspberry Pi 1+
+date: 2016-11-30
+url: 2016-12-01-installing-nodejs-raspberry-pi
+summary: How to install Node.JS v6.x on an ARMV6 Raspberry Pi.
+---
+For the final step of my [BoomBox capstone project][1], I needed to install Boombox (and thus Node.JS) on my Raspberry Pi, which happens to be a Model 1+. So I ran `sudo apt install nodejs npm`, but quickly realized that this only installed node version 0.10.x, not sure why at this point.
+
+So, I uninstalled via `sudo apt remove nodejs npm`, and tried to use `nodesource` to install Node version 4.x.
+
+``` bash
+$ curl -sL https://deb.nodesource.com/setup_4.x | bash -
+## Installing the NodeSource Node.js v4.x LTS Argon repo...
+
+### You appear to be running on ARMv6 hardware. Unfortunately this is not currently supported by the NodeSource Linux distributions. Please use the 'linux-armv6l' binary tarballs available directly from nodejs.org for Node.js v4 and later.
+```
+
+Turns out nodesource does not support ARMV6, only the newer ARMV7 and ARMV8. Obviously, if you have ARMV7 or ARMV8, I believe the above command would work perfectly fine for you.
+
+## Installing Node.JS ARMV6 from Binaries
+Thankfully, the steps to install are in the nodesource error message above: _"Please use the 'linux-armv6l' binary tarballs available directly from nodejs.org for Node.js v4 and later."_
+
+### Download AMRV6 Tarball
+Head to the [nodejs.org downloads page][2] and grab the URL of the ARMV6 download link (in this case [https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-armv6l.tar.xz][3]). Notice the downloads page says this is a binary download, which means
+
+1. no need to waste time waiting for a slow-as-all-get-out Raspberry Pi to compile Node
+1. you don't have to worry about cross-compiling (see 1)
+
+First, we're going to download the binaries into our `/usr/src` directory.
+``` bash
+$ cd /usr/local/src
+$ wget https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-armv6l.tar.xz
+```
+
+### Uncompress the Tarball
+Once you uncompress the downloaded tarball, you can inspect the files and see that the `node` binary is located at `node-v6.9.1-linux-armv6l/bin/node`.
+``` bash
+$ tar -xvf node-v6.9.1-linux-armv6l.tar.xz
+$ cd node-v6.9.1-linux-armv6l/
+$ ls -l
+```
+
+### Add Node Symlink
+Now that we have node "installed", we just need to link to the `node` binary from a PATH directory. We'll do this with a symbolic link in `/usr/local/bin`. 
+``` bash
+sudo ln -s /usr/src/node-v6.9.1-linux-armv6l/bin/node /usr/local/bin/nodejs
+```
+
+If you want, you can setup a `node` symbolic link which just points to the `node` symbolic link.
+```
+sudo ln -s /usr/local/bin/nodejs /usr/local/bin/node
+```
+
+### It Works?
+Just to make sure...
+``` bash
+$ node --version
+v6.9.1
+$ npm --version
+4.0.2
+```
+
+Booyah!
+
+[1]: https://github.com/mborn319/BoomBox
+[2]: https://nodejs.org/en/download/
+[3]: https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-armv6l.tar.xz
