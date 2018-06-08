@@ -1,0 +1,30 @@
+---
+author: Michael Born
+title: Node-Gyp Errors
+date: 2016-11-30
+url: node-gyp-errors
+summary: While fixing a compile error with an npm dependency, I explain how node-gyp actually works.
+---
+
+So, node-gyp is sortof a pain.
+
+# What is Node-Gyp?
+`node-gyp` is a _["Node.JS native addon build tool"](1)_, according to `man node-gyp`. What that means is, it takes care of installing pain-in-the-neck libraries like `alsa` for you, so you don't have to manually download and compile the library specially for your system.
+
+The problem is that the compile doesn't always **work**, and it's sortof hard to debug. I'll detail the steps I took to resolve just such an issue with the `speaker` npm module.
+
+# "Failed to exec install script"
+Ok, so the first thing I see is that the error log is at `/var/myproject/npm-debug.log`, so I pull this up and start looking at what exactly went wrong.
+
+```
+info install speaker@0.3.0
+verbose unsafe-perm in lifecycle true
+info speaker@0.3.0 Failed to exec install script
+verbose node_modules speaker unbuild
+warn This failure might be due to the use of legacy binary "node"
+```
+
+Okay, so I don't think this is the actual problem, but I had previously installed `node` and `nodejs-legacy` because I was used to typing `node index.js`, not `nodejs index.js`. See [1][this StackOverflow post] for more details. Turns out I was an idiot, and the Debian package `node` is completely unrelated to `nodejs`. 
+
+# The fix
+Running `sudo apt remove node nodejs-legacy` fixed the issue for me.

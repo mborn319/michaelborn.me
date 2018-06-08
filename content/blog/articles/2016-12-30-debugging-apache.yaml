@@ -1,0 +1,39 @@
+---
+author: Michael Born
+title: Debugging Apache
+date: 2016-12-30
+url: 2016-12-30-debugging-apache
+summary: What to do when your virtual host hiccups
+---
+Before you do anything else with web development, you should know how to debug your server installation. In this post, I'll assume you're using Apache on Ubuntu, and walk you through a checklist of what to try when something breaks.
+
+# Reloading configuration changes
+First, any change to the configuration files, whether `apache.conf` or a VirtualHost file (I'll explain later) MUST be accompanied by `service apache2 reload` in order to put the new settings into effect.
+
+If you get an error message when you try to run `service apache2 reload`, check the apache log: `tail /var/log/apache2`
+
+If it seems like the server settings aren't taking effect, try restarting Apache completely with `service apache2 restart`.
+
+### 403 errors
+#### File Permissions
+If you get a 403 error in the browser, ever, check the file permissions in your DocumentRoot. You may have to do `chmod a+rx /var/www`, or whatever. This is not really recommended, but often necessary.
+
+#### Directory Settings
+Next, check the <Directory> setting in apache2.conf or your virtual host file. (More on this later.) Make sure the pathname is correct, and `Require All Granted` is specified within the `<Directory>...</Directory>` block.
+
+One helpful debugging tip is turning on directory indexes, so when browsing a folder, like `http://localhost/`, and no DirectoryIndex file exists, like `index.html` or `index.php`, you get a listing of the files in the site root.
+```
+<Directory /var/www/html>
+	# other stuff here
+  Options +Indexes
+</Directory>
+```
+
+### My .htaccess file isn't working!
+If you want to use .htaccess configs, check your `<Directory>` rule for the `AllowOverride` setting. Set to `All` to enable, `None` to disable. I recommend NOT using .htaccess files, instead sticking to the virtual host config file, but sometimes you have no other choice.
+```
+<Directory /var/www/html>
+	# other stuff here
+  AllowOverride All
+</Directory>
+```
